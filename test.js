@@ -5,6 +5,7 @@ require('./random-player.js');
 require('./perfect-player.js');
 require('./finisher-player.js');
 require('./blocker-player.js');
+require('./human-player.js');
 
 (Game = function( p1, p2){
 	board = new Board();
@@ -114,6 +115,7 @@ var playerP7 = new PerfectPlayer("40", 60);
 var playerP8 = new PerfectPlayer("30", 70);
 var playerP9 = new PerfectPlayer("20", 80);
 var playerP10 = new PerfectPlayer("10", 90);
+var playerH1 = new HumanPlayer("Human");
 
 var playerF1 = new FinisherPlayer("Finisher");
 var playerB1 = new BlockerPlayer("Blocker");
@@ -121,7 +123,7 @@ var playerB1 = new BlockerPlayer("Blocker");
 var players = [playerS1, playerR1, playerP1, playerF1, playerB1, playerP2, playerP3, playerP4, playerP5, playerP6, playerP7, playerP8, playerP9, playerP10];
 //var players = [playerP1, playerP7];
 
-var scenario = 1;
+var scenario = 2;
 switch(scenario) {
 	case 1:
 		var series = new Series( 500, players);
@@ -129,13 +131,13 @@ switch(scenario) {
 		break;
 		
 	case 2:
-		var game = new Game( playerF1, playerP1);
+		var game = new Game( playerP1, playerH1);
 		game.play();
 		game.display_board();
 		break;
 	
 	case 3:
-		console.log( playerF1 + " vs " + playerP1);
+		console.log( playerR1 + " vs " + playerH1);
 		do {
 		var game = new Game( playerF1, playerP1);
 		} while( game.play(true) != 1);
