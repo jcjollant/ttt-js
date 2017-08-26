@@ -1,54 +1,12 @@
 require('./ttt-board.js');
 require('./ttt-result.js');
+require('./ttt-game.js');
 require('./sequence-player.js');
 require('./random-player.js');
 require('./perfect-player.js');
 require('./finisher-player.js');
 require('./blocker-player.js');
 require('./human-player.js');
-
-(Game = function( p1, p2){
-	board = new Board();
-	player1 = p1;
-	player2 = p2;
-	moves = [];
-}).prototype = {
-	display_board: function(){ 
-		board.display();
-		console.log( "Moves:" + moves);
-	},
-	play: function(quiet=false) {
-		//board.debug();
-		if( !quiet) console.log( "Playing " + player1 + "[X] vs " + player2 + "[O]");
-		nextPlayer = player1;
-		playerValue = 1;
-		while( !board.isFull() && !board.isWon()) {
-			move = nextPlayer.play( board, playerValue);
-			if( move == -1) {
-				console.log( "Player " + nextPlayer + " cannot move");
-				break;
-			}
-			moves.push(move);
-			//console.log( "Player " + nextPlayer + " moving at " + move);
-			board.set( move, playerValue);
-			nextPlayer = (nextPlayer === player1 ? player2 : player1);
-			playerValue = playerValue * -1;
-			
-		}
-		//board.display();
-		winner = board.getWinner();
-		if( winner == 0) {
-			status = "Draw";
-		} else {
-			status = "Won by ";
-			if( winner == 1) status += player1;
-			else if (winner == -1) status += player2;
-			else status += "?";
-		}
-		if( !quiet) console.log( "Game completed : " + status);
-		return winner;
-	}
-};
 
 (Series = function(c, p){
 	gamesCount = c;
@@ -131,7 +89,7 @@ switch(scenario) {
 		break;
 		
 	case 2:
-		var game = new Game( playerP1, playerH1);
+		var game = new Game( playerP10, playerH1);
 		game.play();
 		game.display_board();
 		break;

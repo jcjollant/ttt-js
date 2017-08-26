@@ -14,8 +14,9 @@ HumanPlayer = function HumanPlayer( name) {
 			case '1': return 6;
 			case '2': return 7; 
 			case '3': return 8; 
+			case '0': return board.getRandomMove();
 		}
-		return board.getRandomMove();
+		return -1;
 	};
 	this.toString = function() { return name;};
 };
