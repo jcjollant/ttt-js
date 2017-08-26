@@ -86,7 +86,8 @@ require('./blocker-player.js');
 		//console.log( "Playing " + count + " games");
 		console.timeEnd('elapsed');
 		results.sort( compareResults);
-		console.log("Results:");
+		var totalGamesPlayed = ((gamesCount * 2) * (gamesCount * 2 + 1) / 2);
+		console.log("Results after " + totalGamesPlayed.toLocaleString() + " games" );
 		results.forEach( function(result) {
 			console.log( result.toString());
 		});
@@ -104,23 +105,26 @@ var playerS2 = new SequencePlayer("Sandy");
 var playerR1 = new RandomPlayer("Randy");
 
 var playerP1 = new PerfectPlayer("Perfect");
-var playerP2 = new PerfectPlayer("95", 5);
-var playerP3 = new PerfectPlayer("90", 10);
-var playerP4 = new PerfectPlayer("25", 75);
-var playerP5 = new PerfectPlayer("75", 25);
+var playerP2 = new PerfectPlayer("90", 10);
+var playerP3 = new PerfectPlayer("80", 20);
+var playerP4 = new PerfectPlayer("70", 30);
+var playerP5 = new PerfectPlayer("60", 40);
 var playerP6 = new PerfectPlayer("50", 50);
-var playerP7 = new PerfectPlayer("P7");
+var playerP7 = new PerfectPlayer("40", 60);
+var playerP8 = new PerfectPlayer("30", 70);
+var playerP9 = new PerfectPlayer("20", 80);
+var playerP10 = new PerfectPlayer("10", 90);
 
 var playerF1 = new FinisherPlayer("Finisher");
 var playerB1 = new BlockerPlayer("Blocker");
 
-//var players = [playerS1, playerR1, playerP1, playerF1, playerB1, playerP2, playerP3, playerP4, playerP5, playerP6];
-var players = [playerP1, playerP7];
+var players = [playerS1, playerR1, playerP1, playerF1, playerB1, playerP2, playerP3, playerP4, playerP5, playerP6, playerP7, playerP8, playerP9, playerP10];
+//var players = [playerP1, playerP7];
 
 var scenario = 1;
 switch(scenario) {
 	case 1:
-		var series = new Series( 5000, players);
+		var series = new Series( 500, players);
 		series.play();
 		break;
 		
