@@ -89,7 +89,7 @@ switch(scenario) {
 		break;
 		
 	case 2:
-		var game = new Game( playerP10, playerH1);
+		var game = new Game( playerH1, playerP1);
 		game.play();
 		game.display_board();
 		break;

@@ -3,7 +3,7 @@ HumanPlayer = function HumanPlayer( name) {
 	var readlineSync = require('readline-sync');	
 	this.play = function( board, value) {
 		board.display();
-		var key = readlineSync.question("Please enter " + (value == 1 ? "X" : "O") + " move [1-9]");
+		var key = readlineSync.question("Please enter " + (value == 1 ? "X" : "O") + " move [1-9]: ");
 		switch( key) {
 			case '7': return 0;
 			case '8': return 1;

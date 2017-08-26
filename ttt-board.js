@@ -10,6 +10,7 @@ Board = function() {
 	};
 	this.debug = function() { console.log( values); };
 	this.display = function () {
+		console.log("");
 		for( index = 0; index < 9; index += 3) {
 			if( index > 0) console.log( "-+-+-");
 			a = board_to_screen( values[index]);
@@ -17,8 +18,7 @@ Board = function() {
 			c = board_to_screen( values[index+2]);
 			console.log( a + "|" + b + "|" + c);
 		}
-		
-		console.log("-----");
+		console.log("");
 	};
 	// Get the value at a given position on the board
 	// @param index is the position between 0 and 8
