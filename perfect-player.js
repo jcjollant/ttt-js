@@ -1,6 +1,7 @@
-PerfectPlayer = function PerfectPlayer( name, t = 0) {
+PerfectPlayer = function PerfectPlayer( name, t) {
+	
 	this.name = name;
-	var threshold = t;
+	var threshold = typeof t !== 'undefined' ? t : 0;
 	
 	function getWinMove(value, board) {
 		var index1, index2, index3;

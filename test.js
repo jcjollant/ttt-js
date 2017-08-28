@@ -81,7 +81,7 @@ var playerB1 = new BlockerPlayer("Blocker");
 var players = [playerS1, playerR1, playerP1, playerF1, playerB1, playerP2, playerP3, playerP4, playerP5, playerP6, playerP7, playerP8, playerP9, playerP10];
 //var players = [playerP1, playerP7];
 
-var scenario = 2;
+var scenario = 1;
 switch(scenario) {
 	case 1:
 		var series = new Series( 500, players);

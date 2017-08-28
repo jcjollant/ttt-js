@@ -7,7 +7,8 @@ Game = function( p1, p2){
 		board.display();
 		console.log( "Moves:" + moves);
 	};
-	this.play = function(quiet=false) {
+	this.play = function(quiet) {
+		quiet = typeof quiet !== 'undefined' ? quiet : false;
 		//board.debug();
 		if( !quiet) console.log( "Playing " + player1 + "[X] vs " + player2 + "[O]");
 		nextPlayer = player1;
