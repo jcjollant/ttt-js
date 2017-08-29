@@ -1,12 +1,13 @@
-require('./synaptic.js');
+//var synaptic = require('./synaptic.js');
+var synaptic = require('synaptic');
 
 function Perceptron(input, h1, h2, output)
 {
 	// create the layers
-	var inputLayer = new Layer(input);
-	var hiddenLayer1 = new Layer(h1);
-	var hiddenLayer2 = new Layer(h2);
-	var outputLayer = new Layer(output);
+	var inputLayer = new synaptic.Layer(input);
+	var hiddenLayer1 = new synaptic.Layer(h1);
+	var hiddenLayer2 = new synaptic.Layer(h2);
+	var outputLayer = new synaptic.Layer(output);
 
 	// connect the layers
 	inputLayer.project(hiddenLayer1);
@@ -22,8 +23,8 @@ function Perceptron(input, h1, h2, output)
 }
 
 // extend the prototype chain
-Perceptron.prototype = new Network();
+Perceptron.prototype = new synaptic.Network();
 Perceptron.prototype.constructor = Perceptron;
 
-var myPeceptron = new Perceptron(10,8,8,9);
-var trainer = new Trainer( myPerceptron);
+var myPerceptron = new Perceptron(10,8,8,9);
+var trainer = new synaptic.Trainer( myPerceptron);
