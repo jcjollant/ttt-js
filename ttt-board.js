@@ -27,6 +27,8 @@ Board = function() {
 		if( index >= 0 && index < 9) return values[index];
 		return -1;
 	};
+
+	this.getValues = function() { return values;};
 	
 	// Get the winner of a given column
 	// @param index Column index between 0 and 2. Left column is 0
@@ -240,6 +242,10 @@ Board = function() {
 		return winner != 0;
 	};
 
+	this.reset = function(position) {
+		if( position >= 0 && position <=8) values[position] = 0;
+	};
+	
 	function restorePosition( position, rotationCount) {
 		var p = position;
 		if( rotationCount != 0) {
