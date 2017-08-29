@@ -1,62 +1,13 @@
 require('./ttt-board.js');
 require('./ttt-result.js');
 require('./ttt-game.js');
+require('./ttt-series.js');
 require('./sequence-player.js');
 require('./random-player.js');
 require('./perfect-player.js');
 require('./finisher-player.js');
 require('./blocker-player.js');
 require('./human-player.js');
-
-(Series = function(c, p){
-	gamesCount = c;
-	players = p;
-}).prototype = {
-	play : function() {
-		console.log( "Players:" + players);
-		console.time('elapsed');
-		playersCount = players.length;
-		results = [];
-		for( var index = 0; index < players.length; index++) {
-			results.push( new Result( players[index]));
-		}
-		scores = Array.apply(null, Array(players.length)).map(Number.prototype.valueOf, 0);
-		for( var p1index = 0; p1index < playersCount - 1; p1index++) {
-			for( var p2index = p1index + 1; p2index < playersCount; p2index++) {
-				var p1 = players[p1index];
-				var p2 = players[p2index];
-				var gamesResults = [0,0,0];
-				for( var gameIndex = 0; gameIndex < gamesCount; gameIndex++) {
-					result = new Game( p1, p2).play(true);
-					gamesResults[result+1]++;
-					result = new Game( p2, p1).play(true) * -1;
-					gamesResults[result+1]++;
-				}
-				results[p1index].wins += gamesResults[2];
-				results[p1index].draws += gamesResults[1];
-				results[p1index].losses += gamesResults[0];
-				results[p2index].wins += gamesResults[0];
-				results[p2index].draws += gamesResults[1];
-				results[p2index].losses += gamesResults[2];
-				console.log( "Game " + p1 + " vs " + p2 + ", results:(" + p1 + "="+ gamesResults[2] + "/" + p2 + "=" + gamesResults[0] + "/Draw=" + gamesResults[1] + ")");
-			}
-		}
-		
-		//console.log( "Playing " + count + " games");
-		console.timeEnd('elapsed');
-		results.sort( compareResults);
-		var totalGamesPlayed = ((gamesCount * 2) * (gamesCount * 2 + 1) / 2);
-		console.log("Results after " + totalGamesPlayed.toLocaleString() + " games" );
-		results.forEach( function(result) {
-			console.log( result.toString());
-		});
-	}
-};
-
-function compareResults(r1, r2) {
-	return r1.wins < r2.wins ? 1 : (r1.wins > r2.wins ? -1 : 0);
-};
-	
 
 
 var playerS1 = new SequencePlayer("Sam");
@@ -78,13 +29,13 @@ var playerH1 = new HumanPlayer("Human");
 var playerF1 = new FinisherPlayer("Finisher");
 var playerB1 = new BlockerPlayer("Blocker");
 
-var players = [playerS1, playerR1, playerP1, playerF1, playerB1, playerP2, playerP3, playerP4, playerP5, playerP6, playerP7, playerP8, playerP9, playerP10];
-//var players = [playerP1, playerP7];
 
 var scenario = 1;
 switch(scenario) {
 	case 1:
-		var series = new Series( 500, players);
+		//var players = [playerS1, playerR1, playerP1, playerF1, playerB1, playerP2, playerP3, playerP4, playerP5, playerP6, playerP7, playerP8, playerP9, playerP10];
+		var players = [playerB1, playerP1, playerP2, playerP3, playerP4, playerP5, playerP6, playerP7, playerR1];
+		var series = new Series( 1000, players);
 		series.play();
 		break;
 		

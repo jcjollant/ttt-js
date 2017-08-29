@@ -5,8 +5,13 @@ Result = function Result(p) {
 	this.losses = 0;
 	
 	this.toString = function() {
-		return player + " W=" + this.wins + " D=" + this.draws + " L=" + this.losses;
+		var totalGames = this.wins + this.draws + this.losses;
+		return player + "\tW=" + formatValue(this.wins, totalGames) + "\tD=" + formatValue(this.draws, totalGames) + "\tL=" + formatValue(this.losses, totalGames);
 	};
+	
+	function formatValue( value, total) {
+		return value.toLocaleString() + " (" + (total == 0 ? 0 : Math.round( value / total * 100)) + "%)";
+	}
 }
 
 	
