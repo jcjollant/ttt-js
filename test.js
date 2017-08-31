@@ -8,7 +8,7 @@ require('./perfect-player.js');
 require('./finisher-player.js');
 require('./blocker-player.js');
 require('./human-player.js');
-
+require('./network-player.js');
 
 var playerS1 = new SequencePlayer("Sam");
 var playerS2 = new SequencePlayer("Sandy");
@@ -30,7 +30,7 @@ var playerF1 = new FinisherPlayer("Finisher");
 var playerB1 = new BlockerPlayer("Blocker");
 
 
-var scenario = 1;
+var scenario = 5;
 switch(scenario) {
 	case 1:
 		//var players = [playerS1, playerR1, playerP1, playerF1, playerB1, playerP2, playerP3, playerP4, playerP5, playerP6, playerP7, playerP8, playerP9, playerP10];
@@ -60,6 +60,11 @@ switch(scenario) {
 		board.display();
 		console.log( "ForkMove=" + board.getForkMove(1));
 		break;
-
+	case 5:
+		var networkPlayer = new NetworkPlayer( "network-50-9.json", "50-9");
+		var players = [networkPlayer, playerP1];
+		var series = new Series( 10000, players);
+		series.play();
+		break;
 }
 
