@@ -28,6 +28,8 @@ var playerH1 = new HumanPlayer("Human");
 
 var playerF1 = new FinisherPlayer("Finisher");
 var playerB1 = new BlockerPlayer("Blocker");
+var playerN1 = new NetworkPlayer( "network-100.json", "NN100");
+var playerN2 = new NetworkPlayer( "network-50.json", "NN50");
 
 
 var scenario = 5;
@@ -40,7 +42,7 @@ switch(scenario) {
 		break;
 		
 	case 2:
-		var game = new Game( playerH1, playerP1);
+		var game = new Game( playerN2, playerN1);
 		game.play();
 		game.display_board();
 		break;
@@ -61,8 +63,7 @@ switch(scenario) {
 		console.log( "ForkMove=" + board.getForkMove(1));
 		break;
 	case 5:
-		var networkPlayer = new NetworkPlayer( "network-50-9.json", "50-9");
-		var players = [networkPlayer, playerP1];
+		var players = [playerN1, playerP1, playerR1];
 		var series = new Series( 10000, players);
 		series.play();
 		break;

@@ -1,3 +1,6 @@
+require('./ttt-result.js');
+require('./ttt-game.js');
+
 Series = function(c, p){
 	gamesCount = c;
 	players = p;
